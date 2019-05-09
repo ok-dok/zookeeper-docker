@@ -35,20 +35,20 @@ RUN groupadd --system --gid=9999 hadoop && \
 COPY zookeeper_profile.sh /etc/profile.d/
 RUN . /etc/profile
 
-ENV ZOO_VERSION=3.4.14 \
-    ZOO_HOME=/opt/zookeeper \
-    ZOO_DATA_DIR=/home/zookeeper/data \
-    ZOO_CONF_DIR=/opt/zookeeper/conf
+ENV ZK_VERSION=3.4.14 \
+    ZK_HOME=/opt/zookeeper \
+    ZK_DATA_DIR=/home/zookeeper/data \
+    ZK_CONF_DIR=/opt/zookeeper/conf
 
-ENV ZOO_FILE_URL=http://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-${ZOO_VERSION}/zookeeper-${ZOO_VERSION}.tar.gz \
-    ZOO_ASC_URL=http://www.apache.org/dist/zookeeper/zookeeper-${ZOO_VERSION}/zookeeper-${ZOO_VERSION}.tar.gz.asc  \
-    ZOO_KEYS_URL=http://www.apache.org/dist/zookeeper/KEYS
+ENV ZK_FILE_URL=http://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-${ZK_VERSION}/zookeeper-${ZK_VERSION}.tar.gz \
+    ZK_ASC_URL=http://www.apache.org/dist/zookeeper/zookeeper-${ZK_VERSION}/zookeeper-${ZK_VERSION}.tar.gz.asc  \
+    ZK_KEYS_URL=http://www.apache.org/dist/zookeeper/KEYS
 
-WORKDIR ${ZOO_HOME}
+WORKDIR ${ZK_HOME}
 RUN set -ex; \
-    wget -nv -O zookeeper.tar.gz "${ZOO_FILE_URL}"; \
-    wget -nv -O zookeeper.tar.gz.asc "${ZOO_ASC_URL}"; \
-    wget -nv -O KEYS "${ZOO_KEYS_URL}"; \
+    wget -nv -O zookeeper.tar.gz "${ZK_FILE_URL}"; \
+    wget -nv -O zookeeper.tar.gz.asc "${ZK_ASC_URL}"; \
+    wget -nv -O KEYS "${ZK_KEYS_URL}"; \
     gpg --import KEYS; \
     gpg --verify zookeeper.tar.gz.asc zookeeper.tar.gz; \
     rm -f KEYS zookeeper.tar.gz.asc

@@ -63,4 +63,4 @@ RUN chmod 755 /docker-entrypoint.sh
 
 EXPOSE 2181 2888 3888
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD ["zkServer.sh"]
+CMD ["zkServer.sh", "start-foreground"]

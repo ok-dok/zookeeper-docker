@@ -2,7 +2,7 @@ version: '2'
 
 services:
     zk1:
-        image: zookeeper:latest
+        image: okdokey/zookeeper:3.4.14
         container_name: zk1
         hostname: zk1
         networks:
@@ -16,7 +16,7 @@ services:
             ZK_SERVERS: server.1=zk1:2888:3888 server.2=zk2:2888:3888 server.3=zk3:2888:3888
 
     zk2:
-        image: zookeeper:latest
+        image: okdokey/zookeeper:3.4.14
         container_name: zk2
         hostname: zk2
         networks:
@@ -30,7 +30,7 @@ services:
             ZK_SERVERS: server.1=zk1:2888:3888 server.2=zk2:2888:3888 server.3=zk3:2888:3888
 
     zk3:
-        image: zookeeper:latest
+        image: okdokey/zookeeper:3.4.14
         container_name: zk3
         hostname: zk3
         networks:

@@ -12,7 +12,7 @@ done
 
 # Write myid only if $ZOO_MY_ID exist
 if [ -n "${ZK_MY_ID}" ]; then
-    mkdir -p $ZOO_DATA_DIR
+    mkdir -p $ZK_DATA_DIR
     echo "${ZK_MY_ID:-1}" > "$ZK_DATA_DIR/myid"
 fi
 
